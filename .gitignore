@@ -4,7 +4,7 @@
 
 # Allow patterns here
 !.gitignore
-!nvim/*
-!i3/*
-!polybar/*
-!alacritty/*
+!nvim/**/*
+!i3/**/*
+!polybar/**/*
+!alacritty/**/*
