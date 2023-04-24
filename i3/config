@@ -86,7 +86,6 @@ bindsym $mod+v split v;exec notify-send 'tile vertically'
 bindsym $mod+q split toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -223,8 +222,8 @@ set_from_resource $term_color15    color15
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #0000ff #00ff00 #F3EBFF #FDF6E3  #6e7681
-  client.focused_inactive #28262c #28262c #c5c0cc #454948  #333333
+  client.focused          #0000ff #333333 #F3EBFF #FDF6E3  #555555
+  client.focused_inactive #28262c #28262c #c5c0cc #454948  #050505
   client.unfocused        #3b3842 #3b3842 #c5c0cc #454948  #333333
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
   client.placeholder      #000000 #0c0c0c #ffffff #000000 

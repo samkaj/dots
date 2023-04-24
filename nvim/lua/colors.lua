@@ -1,6 +1,6 @@
 -- require('github-theme').setup()
 require("no-clown-fiesta").setup({
-	transparent = false, -- Enable this to disable the bg color
+	transparent = true, -- Enable this to disable the bg color
 	styles = {
 		-- You can set any of the style values specified for `:h nvim_set_hl`
 		comments = {},
