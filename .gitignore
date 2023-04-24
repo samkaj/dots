@@ -1,0 +1,9 @@
+# Disallow everything
+*
+!*/
+
+# Allow patterns here
+!.gitignore
+!nvim/*
+!i3/*
+!polybar/*
