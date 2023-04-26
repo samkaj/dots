@@ -1,7 +1,7 @@
-require('plugins')
-require('autocompletions')
-require('remap')
-require('colors')
+require("plugins")
+require("autocompletions")
+require("remap")
+require("colors")
 
 local set = vim.opt
 set.tabstop = 2

@@ -30,7 +30,7 @@ local kind_icons = {
 }
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local servers = { "clangd", "rust_analyzer", "pyright", "tsserver", "cssls", "html" }
+local servers = { "gopls", "clangd", "rust_analyzer", "pyright", "tsserver", "cssls", "html" }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
 		capabilities = capabilities,

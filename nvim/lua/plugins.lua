@@ -30,6 +30,9 @@ return require("packer").startup(function(use)
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 
+  -- Highlighting
+  use("nvim-treesitter/nvim-treesitter")
+
 	-- Complete brackets and stuff
 	use({
 		"windwp/nvim-autopairs",
@@ -60,6 +63,14 @@ return require("packer").startup(function(use)
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
+	})
+	use("mfussenegger/nvim-jdtls")
+
+	use({
+		"smjonas/inc-rename.nvim",
+		config = function()
+			require("inc_rename").setup()
+		end,
 	})
 
 	-- Auto completions
