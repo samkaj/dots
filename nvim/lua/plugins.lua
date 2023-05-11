@@ -30,10 +30,34 @@ return require("packer").startup(function(use)
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 
-  -- Highlighting
-  use("nvim-treesitter/nvim-treesitter")
 
-	-- Complete brackets and stuff
+	use({'hrsh7th/nvim-cmp'})
+  -- LSP
+  use {
+	  'VonHeikemen/lsp-zero.nvim',
+	  branch = 'v2.x',
+	  requires = {
+		  -- LSP Support
+		  {'neovim/nvim-lspconfig'},             -- Required
+		  {                                      -- Optional
+		  'williamboman/mason.nvim',
+		  run = function()
+			  pcall(vim.cmd, 'MasonUpdate')
+		  end,
+	  },
+	  {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+	  -- Autocompletion
+	  {'hrsh7th/nvim-cmp'},     -- Required
+	  {'hrsh7th/cmp-nvim-lsp'}, -- Required
+	  {'L3MON4D3/LuaSnip'},     -- Required
+	 } 
+  }
+
+	-- Highlighting
+	use("nvim-treesitter/nvim-treesitter")
+
+	-- Complete brackets and stuf,f
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
@@ -41,50 +65,63 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- GitHub colors
-	-- use({
-	-- 	"projekt0n/github-nvim-theme",
-	-- 	tag = "v0.0.7",
-	-- 	config = function()
-	-- 		require("github-theme").setup({
-	-- 			transparent = true,
-	-- 		})
-	-- 	end,
-	-- })
-
-	use({ "aktersnurra/no-clown-fiesta.nvim" })
+	use({
+		"rebelot/kanagawa.nvim",
+	})
+	-- Statusline
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "nvim-tree/nvim-web-devicons", opt = true },
+		config = function()
+			require("lualine").setup({
+				options = {
+					icons_enabled = true,
+					theme = "auto",
+					component_separators = { left = "|", right = "|" },
+					section_separators = { left = "", right = "" },
+					disabled_filetypes = {
+						statusline = {},
+						winbar = {},
+					},
+					ignore_focus = {},
+					always_divide_middle = true,
+					globalstatus = false,
+					refresh = {
+						statusline = 1000,
+						tabline = 1000,
+						winbar = 1000,
+					},
+				},
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = { "branch", "diff", "diagnostics" },
+					lualine_c = { "filename" },
+					lualine_x = { "encoding", "fileformat", "filetype" },
+					lualine_y = { "progress" },
+					lualine_z = { "location" },
+				},
+				inactive_sections = {
+					lualine_a = {},
+					lualine_b = {},
+					lualine_c = { "filename" },
+					lualine_x = { "location" },
+					lualine_y = {},
+					lualine_z = {},
+				},
+				tabline = {},
+				winbar = {},
+				inactive_winbar = {},
+				extensions = {},
+			})
+		end,
+	})
 
 	-- Git stuff
 	use("tpope/vim-fugitive")
 	use("airblade/vim-gitgutter")
 
-	-- LSP stuff
-	use({
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
-		"neovim/nvim-lspconfig",
-	})
-	use("mfussenegger/nvim-jdtls")
-
-	use({
-		"smjonas/inc-rename.nvim",
-		config = function()
-			require("inc_rename").setup()
-		end,
-	})
-
-	-- Auto completions
-	use("hrsh7th/nvim-cmp") -- Autocompletion plugin
-	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
-	use("natebosch/vim-lsc")
-	use("saadparwaiz1/cmp_luasnip") -- Snippets source for nvim-cmp
-	use("L3MON4D3/LuaSnip") -- Snippets plugin
-
 	-- Formatters
 	use("sbdchd/neoformat")
-	use({
-		"prettier/vim-prettier",
-	})
 
 	if packer_bootstrap then
 		require("packer").sync()

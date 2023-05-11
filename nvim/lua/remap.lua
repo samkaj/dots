@@ -13,4 +13,4 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, {}) -- Search for token
 vim.keymap.set("n", "<leader>p", function()
 	vim.cmd("Neoformat")
 end)
-vim.keymap.set("n", "<leader>rn", ":IncRename ")
+

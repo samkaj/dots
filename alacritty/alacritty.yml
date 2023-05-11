@@ -16,27 +16,27 @@ window:
 # Font configuration
 font:
   normal:
-    family: Lilex Nerd Font Mono
+    family: CodeNewRoman Nerd Font Mono
     style: Regular
 
   bold:
-    family: Lilex Nerd Font Mono
+    family: CodeNewRoman Nerd Font Mono
     style: Bold
 
   italic:
     style: Italic
-    family: Lilex Nerd Font Mono
+    family: CodeNewRoman Nerd Font Mono
 
   bold_italic:
-    family: Lilex Nerd Font Mono
+    family: CodeNewRoman Nerd Font Mono
     style: Bold Italic
 
   # Point size
-  size: 11.0
+  size: 15.0
 
   offset:
-    x: 0
-    y: 0
+    x: -1 
+    y: -1 
 
   draw_bold_text_with_bright_colors: true
 
@@ -211,9 +211,33 @@ schemes:
       cyan: "#88afa2"
       white: "#d0d0d0"
 
-# Apply the color scheme.
-colors: *noclowns
+  zenbones: &zenbones
+    primary:
+      background: "#1C1917"
+      foreground: "#888f94"
+    normal:
+      black: "#1C1917"
+      red: "#DE6E7C"
+      green: "#819B69"
+      yellow: "#B77E64"
+      blue: "#6099C0"
+      magenta: "#B279A7"
+      cyan: "#66A5AD"
+      white: "#B4BDC3"
+    bright:
+      black: "#403833"
+      red: "#E8838F"
+      green: "#8BAE68"
+      yellow: "#D68C67"
+      blue: "#61ABDA"
+      magenta: "#CF86C1"
+      cyan: "#65B8C1"
+      white: "#888F94"
 
+
+# Apply the color scheme.
+colors: *zenbones
+  
 cursor:
   custom_cursors_colors: true
   style:
