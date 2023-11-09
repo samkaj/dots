@@ -26,12 +26,12 @@ return require("packer").startup(function(use)
 	-- Telescope fuzzy finder
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.1",
+		tag = "0.1.4",
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 
-  -- Highlighting
-  use("nvim-treesitter/nvim-treesitter")
+	-- Highlighting
+	use("nvim-treesitter/nvim-treesitter")
 
 	-- Complete brackets and stuff
 	use({
@@ -41,18 +41,8 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- GitHub colors
-	-- use({
-	-- 	"projekt0n/github-nvim-theme",
-	-- 	tag = "v0.0.7",
-	-- 	config = function()
-	-- 		require("github-theme").setup({
-	-- 			transparent = true,
-	-- 		})
-	-- 	end,
-	-- })
-
-	use({ "aktersnurra/no-clown-fiesta.nvim" })
+  use("nyoom-engineering/oxocarbon.nvim")
+  -- use { "ellisonleao/gruvbox.nvim" }
 
 	-- Git stuff
 	use("tpope/vim-fugitive")
@@ -65,6 +55,7 @@ return require("packer").startup(function(use)
 		"neovim/nvim-lspconfig",
 	})
 	use("mfussenegger/nvim-jdtls")
+  use({"nvim-lualine/lualine.nvim",   requires = { 'nvim-tree/nvim-web-devicons', opt = true }})
 
 	use({
 		"smjonas/inc-rename.nvim",
@@ -79,6 +70,7 @@ return require("packer").startup(function(use)
 	use("natebosch/vim-lsc")
 	use("saadparwaiz1/cmp_luasnip") -- Snippets source for nvim-cmp
 	use("L3MON4D3/LuaSnip") -- Snippets plugin
+	use("evanleck/vim-svelte")
 
 	-- Formatters
 	use("sbdchd/neoformat")
