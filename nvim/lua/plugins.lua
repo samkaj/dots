@@ -41,8 +41,13 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-  use("nyoom-engineering/oxocarbon.nvim")
-  -- use { "ellisonleao/gruvbox.nvim" }
+	-- Colors
+	use({
+		"mcchrish/zenbones.nvim",
+		requires = "rktjmp/lush.nvim",
+	})
+	use("nvim-tree/nvim-web-devicons")
+	use({ "nvim-lualine/lualine.nvim", requires = { "nvim-tree/nvim-web-devicons", opt = true } })
 
 	-- Git stuff
 	use("tpope/vim-fugitive")
@@ -54,8 +59,6 @@ return require("packer").startup(function(use)
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
 	})
-	use("mfussenegger/nvim-jdtls")
-  use({"nvim-lualine/lualine.nvim",   requires = { 'nvim-tree/nvim-web-devicons', opt = true }})
 
 	use({
 		"smjonas/inc-rename.nvim",
@@ -74,9 +77,6 @@ return require("packer").startup(function(use)
 
 	-- Formatters
 	use("sbdchd/neoformat")
-	use({
-		"prettier/vim-prettier",
-	})
 
 	if packer_bootstrap then
 		require("packer").sync()

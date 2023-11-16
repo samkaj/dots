@@ -1,0 +1,32 @@
+local cmd = vim.cmd
+cmd([[autocmd FileType markdown setlocal tabstop=2 shiftwidth=2]])
+cmd([[highlight Normal guibg=none]])
+cmd([[highlight NonText guibg=none]])
+cmd([[highlight Normal ctermbg=none]])
+cmd([[highlight NonText ctermbg=none]])
+cmd([[set rnu]])
+cmd([[command! Wq wq]])
+cmd([[command! W w]])
+cmd([[command! Q q]])
+
+local api = vim.api
+api.nvim_set_keymap("n", "<C-h>", "<C-w>h", { noremap = true, silent = true })
+api.nvim_set_keymap("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })
+api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
+api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
+
+local builtin = require("telescope.builtin")
+vim.g.mapleader = " "
+vim.keymap.set("n", "<leader>fr", function()
+	vim.cmd("vsplit")
+	vim.cmd("Ex")
+end)
+vim.keymap.set("n", "<leader>fe", function()
+	vim.cmd("Ex")
+end)
+vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>p", function()
+	vim.cmd("Neoformat")
+end)
+vim.keymap.set("n", "<leader>rn", ":IncRename ")

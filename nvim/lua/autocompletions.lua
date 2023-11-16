@@ -1,78 +1,28 @@
-require("mason").setup()
-local cmp = require("cmp")
-
+require("cmp").setup()
 local kind_icons = {
 	Text = "",
-	Method = "",
-	Function = "",
+	Method = "",
+	Function = "󰊕",
 	Constructor = "",
-	Field = "",
+	Field = "",
 	Variable = "",
-	Class = "ﴯ",
+	Class = "",
 	Interface = "",
 	Module = "",
-	Property = "ﰠ",
+	Property = "",
 	Unit = "",
-	Value = "",
+	Value = "󰫧",
 	Enum = "",
-	Keyword = "",
+	Keyword = "",
 	Snippet = "",
-	Color = "",
-	File = "",
+	Color = "󰸌",
+	File = "",
 	Reference = "",
-	Folder = "",
+	Folder = "",
 	EnumMember = "",
 	Constant = "",
 	Struct = "",
 	Event = "",
-	Operator = "",
-	TypeParameter = "",
+	Operator = "",
+	TypeParameter = "",
 }
-local lspconfig = require("lspconfig")
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local servers = {"pyright" ,"gopls", "clangd", "rust_analyzer", "tsserver", "cssls", "html", "svelte", "pyright" }
-for _, lsp in ipairs(servers) do
-	lspconfig[lsp].setup({
-		capabilities = capabilities,
-	})
-end
-
-local luasnip = require("luasnip")
-
-cmp.setup({
-	snippet = {
-		expand = function(args)
-			luasnip.lsp_expand(args.body)
-		end,
-	},
-	window = {
-		completion = cmp.config.window.bordered(),
-	},
-	mapping = cmp.mapping.preset.insert({
-		["<C-b>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<C-b>"] = cmp.mapping.complete(),
-		["<C-e>"] = cmp.mapping.abort(),
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
-	}),
-	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
-	}),
-	formatting = {
-		format = function(entry, vim_item)
-			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
-			vim_item.menu = ({
-				buffer = "[Buffer]",
-				nvim_lsp = "[LSP]",
-				luasnip = "[LuaSnip]",
-				nvim_lua = "[Lua]",
-				latex_symbols = "[LaTeX]",
-			})[entry.source.name]
-			return vim_item
-		end,
-	},
-	view = {
-		entires = "custom",
-	},
-})
