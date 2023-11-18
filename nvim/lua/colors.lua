@@ -1,6 +1,4 @@
-vim.cmd([[set termguicolors]])
-vim.cmd([[set background=dark]])
-vim.cmd([[colorscheme zenbones]])
+vim.cmd([[colorscheme lakrits]])
 
 local function wc()
 	return tostring(vim.fn.wordcount().words)
